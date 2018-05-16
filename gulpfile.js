@@ -30,6 +30,7 @@ gulp.task('common-js', function() {
 		'app/libs/phone/jquery.inputmask.bundle.js',
 		'app/libs/phone/phone.js',
 		'app/libs/prognroll/prognroll.js',
+		'app/libs/parallax/parallax.js',
 		'app/js/common.js',
 		])
 	.pipe(concat('common.min.js'))
