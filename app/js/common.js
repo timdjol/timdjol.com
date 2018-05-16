@@ -133,6 +133,31 @@ $(function() {
         }
     });
 
+
+    $("#footer").submit(function() { //Change
+      var th = $(this);
+      event.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: "mailfooter.php", //Change
+        data: th.serialize()
+      }).done(function() {
+      $.magnificPopup.open({ 
+        items: {
+          src: '<div class="footsuccess"><h4>Спасибо за вашу заявку!</h4></div>',
+          type: 'inline'
+        }
+      });
+      setTimeout(function() {
+        // Done Functions
+        th.trigger("reset");
+      }, 300000);
+    });
+    return false;
+  });
+
+   
+
     $("form").submit(function() { //Change
         var th = $(this);
         $.ajax({
