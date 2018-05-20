@@ -31,6 +31,7 @@ gulp.task('common-js', function() {
 		'app/libs/phone/phone.js',
 		'app/libs/prognroll/prognroll.js',
 		'app/libs/parallax/parallax.js',
+		'app/libs/typeit/typeit.min.js',
 		'app/js/common.js',
 		])
 	.pipe(concat('common.min.js'))
@@ -87,6 +88,10 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
 	var buildFiles = gulp.src([
 		'app/*.html',
 		'app/.htaccess',
+		'app/mailfooter.php',
+		'app/robots.txt',
+		'app/sitemap.xml',
+		'app/mail.php',
 		]).pipe(gulp.dest('dist'));
 
 	var buildCss = gulp.src([
@@ -103,36 +108,21 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
 
 });
 
-gulp.task('deploy', function() {
-
-	var conn = ftp.create({
-		host:      'hostname.com',
-		user:      'username',
-		password:  'userpassword',
-		parallel:  10,
-		log: gutil.log
-	});
-
-	var globs = [
-	'dist/**',
-	'dist/.htaccess',
-	];
-	return gulp.src(globs, {buffer: false})
-	.pipe(conn.dest('/path/to/folder/on/server'));
-
-});
-
 gulp.task('rsync', function() {
 	return gulp.src('dist/**')
 	.pipe(rsync({
 		root: 'dist/',
-		hostname: 'username@yousite.com',
-		destination: 'yousite/public_html/',
+		hostname: 'f02079ed@timdjol.com',
+		destination: 'timdjol.com/public_html/',
+		include: ['*.htaccess'], // Includes files to deploy
+		exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
 		archive: true,
 		silent: false,
 		compress: true
 	}));
 });
+
+
 
 gulp.task('removedist', function() { return del.sync('dist'); });
 gulp.task('clearcache', function () { return cache.clearAll(); });
