@@ -37,6 +37,8 @@ body
 	overflow-x: hidden
 	opacity: 1
 	color: #222
+	transform:translateZ(1px)
+
 
 p, li
 	color: #888
@@ -70,6 +72,7 @@ ul
 //top
 .top
 	position: fixed
+	transform: translate3d(0,0,0)
 	bottom: 25px
 	background-color: #E0E0E0
 	border-radius: 10em
@@ -202,16 +205,16 @@ ul
 	padding: 32px 26px
 	background-color: #FFF
 	.mfp-close
-		color: red
-		opacity: .3
+		color: $accent
+		opacity: .4
 		transition: all .3s ease
 		&:hover
-			opacity: .6
+			opacity: .8
 			border: none
 
 .successform
 	color: #fff
-	background-color: darken(red, 10%)
+	background-color: $accent
 	position: absolute
 	z-index: 2
 	left: 0
@@ -221,12 +224,43 @@ ul
 	top: -100%
 	opacity: 0
 	transition: all .3s ease
-	p
+	align-items: center
+	justify-content: center
+	h3
 		display: flex
 		margin: auto
+		color: $light
 	&.active
 		top: 0
 		opacity: 1
+
+#footer
+	position: relative
+
+.footsuccess
+	position: absolute
+	background-color: $accent
+	max-width: 320px
+	width: 100%
+	left: 50%
+	margin-left: -160px
+	opacity: 1
+	padding: 70px 20px
+	top: 50%
+	margin-top: -82px
+	display: flex
+	align-items: center
+	justify-content: center
+	h3
+		font-size: 22px
+		color: $light
+		font-family: raleway-semi, sans-serif
+		letter-spacing: 0
+		text-transform: none
+		margin: 0
+	&.active
+		opacity: 1
+		top: 50%
 
 .form-callback
 	h4
@@ -244,18 +278,22 @@ ul
 		float: none
 		margin-top: 0
 
-header
+.parallax-window
 	position: relative
 	padding-top: 20px
 	height: 100vh
 	min-height: 400px
 	z-index: 2
 	color: $light
-	// background-image: url(../img/bg.jpg)
-	// background-size: cover
-	// background-position: center
-	// background-attachment: fixed
+	&.bg
+		background-image: url(../img/bg.jpg)
+		background-size: cover
+		background-position: center
+	
 .logo
+	img
+		max-width: 200px
+		margin-left: 0
 	svg
 		max-width: 100px
 		fill: red
@@ -381,12 +419,14 @@ svg
 		li
 			display: block
 			&:nth-child(1) a
-				animation-delay: 0
+				animation-delay: 0s
 			&:nth-child(2) a
 				animation-delay: .1s
 			&:nth-child(3) a
 				animation-delay: .2s
 			&:nth-child(4) a
+				animation-delay: .3s
+			&:nth-child(5) a
 				animation-delay: .4s
 		a
 			color: #fff
@@ -472,19 +512,19 @@ svg
 		animation: scrollanimation 2s infinite
 
 @keyframes scrollanimation
-  0%
-    height: 5px
+	0%
+		height: 5px
 
-  50%
-    height: 24px
+	50%
+		height: 24px
 
-  100%
-    height: 5px
+	100%
+		height: 5px
 
 .about
 	background-color: $light
 
-section
+.portfolio, .contacts, .resume, .about, .service, .statistic, .process-work
 	padding: 70px 0 90px
 	h2
 		text-transform: uppercase
@@ -552,7 +592,26 @@ section
 			&:hover
 				color: darken($accent, 15%)
 
-
+//service
+.service
+	background-color: $light
+	text-align: center
+	h2
+		color: #222
+	.descr
+		color: #222
+		&::after
+			background-color: #222
+	.item
+		transition: all .75s ease
+		&:hover
+			transform: scale(1.1)
+	svg
+		max-width: 150px
+	h3
+		color: #222
+		margin-top: 10px
+	
 //resume
 .resume
 	h3
@@ -588,7 +647,7 @@ section
 
 .left 
 	text-align: right
-	border-right: #d2d2d2 1px solid
+	// border-right: #d2d2d2 1px solid
 	h3
 		text-align: right
 	.resume_description 
@@ -610,11 +669,148 @@ section
 		margin-bottom: 15px
 		padding: 0 10px
 
+//statistic
+.statistic
+	background-color: #222
+	.descr
+		color: $light
+		&::after
+			background-color: $light
+	h2
+		color: $light
+	span
+		color: $light
+		&::after
+			background-color: $light
+
+.num-item
+	text-align: center
+	h3
+		margin-top: 0
+		margin-bottom: 2px
+		color: #fff
+	span
+		color: $accent
+		font-weight: bold
+	.descr
+		font-size: 16px
+		color: #fff
+		margin-bottom: 0
+		margin-top: 10px
+		&::after
+			display: none
+
+//process
+.process-work
+	li
+		margin-bottom: 0
+	.descr
+		margin-bottom: 80px
+.process
+	border: 2px dashed rgba(0, 0, 0, 0.3)
+	position: relative
+	width: 100%
+	float: left
+	padding: 50px 0
+	min-height: inherit
+	&:first-child
+		.process-step
+			top: 0
+	&:last-child
+		border-bottom: none
+		.process-step
+			top: auto
+			bottom: 0
+	&-step
+		width: 70px
+		height: 70px
+		line-height: 70px
+		text-align: center
+		background-color: $accent
+		border-radius: 100%
+		display: inline-block
+		font-size: 20px
+		color: #fff
+		position: absolute
+		top: 50px
+		z-index: 10
+	&-descr
+		z-index: 10
+	h3
+		font-family: raleway-semi,sans-serif
+		color: $accent
+		font-size: 18px
+		margin-top: 0
+	p
+		margin-bottom: 0
+		color: #222
+	&.leftproc
+		border-right: 0
+		border-top: 0
+		h3, p
+			text-align: left
+		.process-step
+			left: -35px
+		.process-descr
+			padding-left: 60px
+	&.rightproc
+		border-left: 0
+		border-top: 0
+		padding-top: 50px
+		h3, p
+			text-align: right
+		.process-step
+			right: -35px
+		.process-descr
+			padding-right: 60px
+	.border-area 
+		position: absolute
+		background-color: #fff
+		height: 110px
+		width: 55px
+		&::before
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			top: 0
+			bottom: 0
+		&.left-top
+			top: -2px
+			left: -2px
+			&::before
+				border-left: 2px dashed rgba(0, 0, 0, 0.3)
+				border-top: 2px dashed rgba(0, 0, 0, 0.3)
+				border-top-left-radius: 70px
+		&.left-bottom
+			bottom: -2px
+			left: -2px
+			&::before
+				border-left: 2px dashed rgba(0, 0, 0, 0.3)
+				border-bottom: 2px dashed rgba(0, 0, 0, 0.3)
+				border-bottom-left-radius: 70px
+		&.right-top
+			top: -2px
+			right: -2px
+			&::before
+				border-right: 2px dashed rgba(0, 0, 0, 0.3)
+				border-top: 2px dashed rgba(0, 0, 0, 0.3)
+				border-top-right-radius: 70px
+		&.right-bottom
+			bottom: -2px
+			right: -2px
+			&::before
+				border-bottom-right-radius: 70px
+				border-right: 2px dashed rgba(0, 0, 0, 0.3)
+				border-bottom: 2px dashed rgba(0, 0, 0, 0.3)
 
 //portfolio
 .portfolio
 	background-color: #222
-
+	.descr
+		color: $light
+		&::after
+			background-color: $light
 
 	h2
 		color: $light
@@ -818,16 +1014,191 @@ section
 			max-width: 18px
 			height: auto
 
-.footsuccess
-	position: absolute
-	background-color: #fff
-	max-width: 320px
-	top: 50%
-	left: 50%
-	h4
-		font-size: 20px
-		color: #222
+
 
 .parallax-mirror
 	z-index: 2!important
+
+
+//logo
+.img 
+	.cls-1
+		fill: $accent
+		stroke: $accent
+		animation: animate1 5s cubic-bezier(0,0.23,1,.1)
+		stroke-dasharray: 1800
+		opacity: 10
+	.cls1-1
+		stroke: $accent
+		fill: $accent
+		animation: animate1 5s cubic-bezier(0,0.23,1,.1)
+		stroke-dasharray: 1800
+		opacity: 10
+	path
+		stroke: #113b60
+		fill: #113b60
+		stroke-dasharray: 1800
+		opacity: 10
+		animation: animate3 6s cubic-bezier(0,0.23,1,.1)
+
+	@keyframes animate1
+		0%
+			opacity: 0
+			fill: none
+			stroke-dashoffset: 1800
+		30%
+			opacity: 10
+			fill: none
+			stroke-dashoffset: 1800
+		90%
+			fill: #fff
+			opacity: .5
+		100%
+			opacity: 10
+			fill: $accent
+			stroke-dashoffset: 0
+
+//call button
+.call-button
+	position: fixed
+	bottom: 70px
+	left: 80px
+	transform: translate(-50%, -50%)
+	z-index: 10
+
+.pulse, .bloc, .anim-phone
+	position: absolute
+	width: 70px
+	height: 70px
+	color: #fff
+	text-align: center
+	border-radius: 50%
+
+.bloc
+	cursor: pointer
+	z-index: 1
+	overflow: hidden
+
+.pulse
+	background: $accent
+	position: relative
+	transition: .5s
+	&::before
+		content: ''
+		position: absolute
+		border: 1px solid $accent
+		left: -20px
+		right: -20px
+		top: -20px
+		bottom: -20px
+		border-radius: 50%
+		animation: pulse 1.8s linear infinite
+		opacity: 0
+	&::after
+		content: ''
+		position: absolute
+		border: 1px solid $accent
+		left: -20px
+		right: -20px
+		top: -20px
+		bottom: -20px
+		border-radius: 50%
+		animation: pulse 1.8s linear infinite
+		opacity: 0
+		animation-delay: .5s
+	.soc-list
+		position: absolute
+		bottom: 10px
+		left: 0
+		background-color: $accent
+		padding: 20px
+		border-radius: 50px
+		display: none
+		z-index: 10
+		&.active
+			display: block
+
+		li
+			display: block
+			a
+				color: $light
+				font-size: 30px
+				&:hover
+					color: $light
+					opacity: .6
+					transform: scale(1.3)
+.anim-phone
+	font-size: 40px
+	line-height: 75px
+	animation: phone .9s ease-in-out infinite
+
+.text
+	position: absolute
+	opacity: 0
+	text-transform: uppercase
+	font-weight: 700
+	top: 24px
+	font-size: 12px
+	transform: scaleX(-1)
+	transition: .5s ease-in-out
+	line-height: 1.2
+
+.anim-phone i
+	transition: .5s ease-in-out
+
+.pulse:hover
+	background: $accent
+	i
+		transition: .5s ease-in-out
+		transform: scale(0)
+	.text
+		transform: scaleX(1)
+		transition: .5s ease-in-out
+		opacity: 1
+	&::before
+		content: ''
+		position: absolute
+		border: 1px solid $accent
+		left: -20px
+		right: -20px
+		top: -20px
+		bottom: -20px
+		border-radius: 50%
+		animation: pulse 1.8s linear infinite
+		opacity: 0
+	&::after
+		content: ''
+		position: absolute
+		border: 1px solid $accent
+		left: -20px
+		right: -20px
+		top: -20px
+		bottom: -20px
+		border-radius: 50%
+		animation: pulse 1.8s linear infinite
+		opacity: 0
+		animation-delay: .5s
+	.soc-list
+		li
+			a, i
+				color: $light
+				position: relative
+				transform: none
+
+@keyframes phone
+	0%, 100%
+		transform: rotate(-20deg)
+	50%
+		transform: rotate(21deg)
+
+
+@keyframes pulse
+	0%
+		transform: scale(0.5)
+		opacity: 0
+	50%
+		opacity: 1
+	100%
+		transform: scale(1.2)
+		opacity: 0
 @import "media" // Всегда в конце

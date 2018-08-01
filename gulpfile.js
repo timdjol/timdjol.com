@@ -32,6 +32,7 @@ gulp.task('common-js', function() {
 		'app/libs/prognroll/prognroll.js',
 		'app/libs/parallax/parallax.js',
 		'app/libs/typeit/typeit.min.js',
+		'app/libs/animateNumber/jquery.animateNumber.min.js',
 		'app/js/common.js',
 		])
 	.pipe(concat('common.min.js'))

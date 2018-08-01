@@ -5,6 +5,9 @@
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px)
 	/**/
+	.row
+		width: 100%
+		margin: 0 auto
 
 
 /* Medium Devices, Desktops */
@@ -19,10 +22,41 @@
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 767px)
 	/**/
+	.descr
+		margin-bottom: 70px
+	.logo
+		img
+			max-width: 150px
+			margin: 0 auto
+	.toggle_mnu
+		width: 40px
+		height: 40px
 	.top_wrapper .top_text h1
 		font-size: 1.8em
-
-
+	.process
+		&:first-child
+			padding-top: 20px
+		h3
+			font-size: 16px
+			margin-bottom: 15px
+		p
+			font-size: 14px
+		&.leftproc 
+			.process-step
+				left: -30px
+		&.rightproc 
+			.process-step
+				right: -30px
+	.main-footer
+		text-align: center
+	.main-footer .social_wrap
+		float: none
+		text-align: center
+		margin-top: 15px
+	.num-item
+		margin-bottom: 30px
+	.call-button
+		display: none
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px)
 	/**/
