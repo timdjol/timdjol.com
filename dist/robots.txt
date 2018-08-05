@@ -1,3 +1,7 @@
 User-agent: *
-Disallow: 
+Disallow: /stom
 Disallow: /404.html
+
+Host: https://timdjol.com
+
+Sitemap: https://timdjol.com/sitemap.xml
