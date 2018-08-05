@@ -51,7 +51,6 @@ $(function() {
 		$(this).find(".podrt_descr").attr("id", "work_" + i);
 	});
 
-
 	//animate
 	$(".top_text h1").animated("fadeInDown", "fadeOutUp");
 	$(".top_text p").animated("fadeInUp", "fadeOutDown");
@@ -97,7 +96,6 @@ $(function() {
 		};
 	});
 
-	
 	//lazy load
 	var lazyLoadInstances = [];
 	var lazyLazy = new LazyLoad({
@@ -146,24 +144,6 @@ $(function() {
 	});
 	return false;
 });
-
-	// $("#footer").submit(function() { //Change
-	//     var cur = $(this);
-	//     $.ajax({
-	//         type: "POST",
-	//         url: "mailfooter.php", //Change
-	//         data: cur.serialize()
-	//     }).done(function() {
-	//      cur.find("footsuccess").addClass("active");
-	//      setTimeout(function() {
-	//             // Done Functions
-	//             cur.find(".footsuccess").removeClass("active");
-	//             cur.trigger("reset");
-	//             $.magnificPopup.close();
-	//         }, 30000000000);
-	//  });
-	//     return false;
-	// });
 
 	$("#callback").submit(function() { //Change
 		var th = $(this);
@@ -233,8 +213,6 @@ $(function() {
 				numberStep: comma_separator_number_step},
 				3200);
 		});
-		this.destroy();
-
 	}, {
 		offset: '70%'
 	});

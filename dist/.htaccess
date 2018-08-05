@@ -60,3 +60,5 @@ RewriteRule ^index\.html$ https://timdjol.com/ [R=301,L]
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
 RewriteRule ^index\.php$ https://timdjol.com/ [R=301,L]
 
+ErrorDocument 404 https://timdjol.com/404.html
+
