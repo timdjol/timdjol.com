@@ -1,9 +1,4 @@
 $(function() {
-	//preloader
-	$(window).on('load', function() {
-		$('.preloader').delay(1000).fadeOut('slow');
-	});
-	
 	//popup
 	$("a[href='#callback']").magnificPopup({
 		mainClass: 'my-mfp-zoom-in',
@@ -221,7 +216,6 @@ $(function() {
 	//social popup
 	$('.call-button').click(function() {
 		$('.soc-list').toggle('slow').toggleClass('active');
-
 	});
 
 });

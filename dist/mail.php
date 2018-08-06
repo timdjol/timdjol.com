@@ -1,11 +1,10 @@
 <?php
 
-$recepient = "info@drinks.kg";
-$sitename = "Drinks.kg";
+$recepient = "info@timdjol";
+$sitename = "Tim Djol";
 
 $name = trim($_POST["name"]);
 $phone = trim($_POST["phone"]);
-$text = trim($_POST["text"]);
 $message = "Имя: $name \nТелефон: $phone \nСообщение: $text";
 
 $pagetitle = "Новая заявка с сайта \"$sitename\"";
